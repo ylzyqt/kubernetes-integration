@@ -1,4 +1,6 @@
-## kubernetes-integration
+## kubernetes-integration 版本v1.11.3
+
++ #### 感谢 https://github.com/maguowei/kubernetes-for-china 提供原始资料
 
 + #### 环境准备
    
