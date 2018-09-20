@@ -12,4 +12,4 @@
 + #### 学习笔记
    1. [nginx](https://github.com/ylzyqt/kubernetes-integration/blob/master/train/nginx/nginx.md)   
    2. [redis](https://github.com/ylzyqt/kubernetes-integration/blob/master/train/redis/redis.md)   
-   3. [frontend](https://github.com/ylzyqt/kubernetes-integration/blob/master/train/frontend/frontend.md)
+   3. [httpd](https://github.com/ylzyqt/kubernetes-integration/blob/master/train/httpd/httpd.md)

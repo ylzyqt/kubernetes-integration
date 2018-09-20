@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  labels:
+    k8s-app: httpd
+  name: httpd
+spec:
+  type: NodePort
+  ports:
+    - port: 8088
+      targetPort: 80
+      nodePort: 30002
+  selector:
+    k8s-app: httpd
