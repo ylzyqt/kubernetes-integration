@@ -1,0 +1,13 @@
+*.settings
+*.project
+**/.settings
+**/.classpath
+**/.eclipse
+**/.project
+**/target
+**/bin
+*.iml
+.idea/
+*.log
+out
+*.versionsBackup
