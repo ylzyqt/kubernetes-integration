@@ -30,5 +30,6 @@
         4. 成功之后的日志输出，kubeadm join*******  请自行保存，这个是node节点用来joinmaster用的 
         5. kubectl taint nodes --all node-role.kubernetes.io/master- 如果是单节点
         6. 验证安装成功 : kubectl get nodes
+        7. 当出问题之后  kubeadm reset 可以重置kubeadm然后再进行kube init...
 + #### kubernetes join [此处是slave需要]
         kubeadm join*******  就是上面安装master成功后的输出          
