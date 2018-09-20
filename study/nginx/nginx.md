@@ -1,4 +1,4 @@
-## kubernetes-hello world
+## kubernetes-nginx
 
 + #### 拷贝本目录的nginx-pod.yaml 到自定义目录
 
