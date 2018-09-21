@@ -4,7 +4,7 @@
 
 + #### 环境准备
    
-   1. Ubuntu 16.04
+   1. Ubuntu 16.04 [本文中使用的是阿里云经典网络机器]
    
 + #### 安装步骤
    1. [安装教程](https://github.com/ylzyqt/kubernetes-integration/blob/master/install/install.md)
