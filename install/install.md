@@ -8,7 +8,8 @@
         1. 卸载已有docker :  sudo apt-get remove docker docker-engine docker.io
         2. apt-get update
         3. apt-cache policy docker-engine 查找目前可安装的版本，注意kubernetes v.1.11.3支持<=17.03版本
-           本文推荐安装17.03.0-ce               
+           本文安装17.03.0-ce   
+        4. 安装docker    sudo apt-get install -y docker-engine=17.03.0~ce-0~ubuntu-xenial               
 +  #### pull镜像 (有此步骤、可以不用科学上网)
         1. 将当前目录的images、pull_images.sh文件 拷贝到机器自定义目录，然后执行 sh pull_images.sh即可pull镜像    
 +  #### 安装kubernetes
