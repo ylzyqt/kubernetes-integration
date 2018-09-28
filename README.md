@@ -10,6 +10,7 @@
    1. [安装教程](https://github.com/ylzyqt/kubernetes-integration/blob/master/install/install.md)
      
 + #### 学习笔记
-   1. [nginx](https://github.com/ylzyqt/kubernetes-integration/blob/master/train/nginx/nginx.md)   
-   2. [redis](https://github.com/ylzyqt/kubernetes-integration/blob/master/train/redis/redis.md)   
-   3. [httpd](https://github.com/ylzyqt/kubernetes-integration/blob/master/train/httpd/httpd.md)
+   1. [docs](https://github.com/ylzyqt/kubernetes-integration/blob/master/train/docs/docs.md)
+   2. [nginx](https://github.com/ylzyqt/kubernetes-integration/blob/master/train/nginx/nginx.md)   
+   3. [redis](https://github.com/ylzyqt/kubernetes-integration/blob/master/train/redis/redis.md)   
+   4. [httpd](https://github.com/ylzyqt/kubernetes-integration/blob/master/train/httpd/httpd.md)
