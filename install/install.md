@@ -1,5 +1,8 @@
 ## kubernetes-install
 
++  #### 环境准备
+        Ubuntu 16.04 [本文中使用的是阿里云经典网络机器]
+
 +  #### 切换root账号
         sudo su
 +  #### 禁用swap
@@ -24,7 +27,7 @@
         kubeadm init --kubernetes-version=1.11.3 --pod-network-cidr=10.244.0.0/16 
              --apiserver-advertise-address=内网ip地址 
         常见报错:
-        1. 需要带kubernates-version,否则: unable to get URL "https://dl.k8s.io/release/stable-1.11.txt": 
+        1. 需要带kubernates-version,unable to get URL "https://dl.k8s.io/release/stable-1.11.txt": 
             Get https://storage.googleapis.com/kubernetes-release/release/stable-1.11.txt: dial 
             tcp 172.217.160.112:443: i/o timeout
         2. 注意版本号，1.11.3与images中的版本，需要一致，否则会出现:     
