@@ -5,17 +5,20 @@
 
 +  #### 切换root账号
         sudo su
-+  #### 禁用swap
-        swapoff -a 永久禁用参考: /etc/fstab
-+  #### 安装docker
++  #### swap设置(master,node)
+        如果不禁用swap的话： /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
+                             Environment="KUBELET_EXTRA_ARGS=--fail-swap-on=false"
+                             systemctl daemon-reload
++  #### 安装docker(docker的版本只是warnning,可以使用自用版本)(master,node)
         1. 卸载已有docker :  sudo apt-get remove docker docker-engine docker.io
         2. apt-get update
         3. apt-cache policy docker-engine 查找目前可安装的版本，注意kubernetes v.1.11.3支持<=17.03版本
            本文安装17.03.0-ce   
-        4. 安装docker    sudo apt-get install -y docker-engine=17.03.0~ce-0~ubuntu-xenial               
-+  #### pull镜像 (有此步骤、可以不用科学上网)
+        4. 安装docker    sudo apt-get install -y docker-engine=17.03.0~ce-0~ubuntu-xenial              
+        5. 设置自启动  sudo systemctl enable docker 
++  #### pull镜像 (有此步骤、可以不用科学上网) (master,node)
         1. 将当前目录的images、pull_images.sh文件 拷贝到机器自定义目录，然后执行 sh pull_images.sh即可pull镜像    
-+  #### 安装kubernetes
++  #### 安装kubernetes (master,node)
         1. apt-get update && apt-get install -y apt-transport-https
         2. curl -s https://mirrors.aliyun.com/kubernetes/apt/doc/apt-key.gpg | apt-key add -
         3. cat <<EOF >/etc/apt/sources.list.d/kubernetes.list
@@ -23,11 +26,13 @@
            EOF
         4. apt-get update
         5. apt-get install -y kubelet kubeadm kubectl
-+ #### kubernetes init [此处master需要]
+        6. 设置自启动  sudo systemctl enable kubelet
++ #### kubernetes init (master)
         kubeadm init --kubernetes-version=1.11.3 --pod-network-cidr=10.244.0.0/16 
-             --apiserver-advertise-address=内网ip地址 
+             --apiserver-advertise-address=内网ip地址 可以忽略
+             --ignore-preflight-errors=Swap
         常见报错:
-        1. 需要带kubernates-version,unable to get URL "https://dl.k8s.io/release/stable-1.11.txt": 
+        1. 需要带kubernates-version,unable to get URL "https://dl.k8s.io/release/stable-1.11.txt" 
             Get https://storage.googleapis.com/kubernetes-release/release/stable-1.11.txt: dial 
             tcp 172.217.160.112:443: i/o timeout
         2. 注意版本号，1.11.3与images中的版本，需要一致，否则会出现:     
@@ -40,5 +45,5 @@
         5. kubectl taint nodes --all node-role.kubernetes.io/master- 如果是单节点
         6. 验证安装成功 : kubectl get nodes
         7. 当出问题之后  kubeadm reset 可以重置kubeadm然后再进行kube init...
-+ #### kubernetes join [此处是slave需要]
++ #### kubernetes join(node]
         kubeadm join*******  就是上面安装master成功后的输出          
