@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-demo
+  namespace: default
+  labels:
+    app: myapp
+    tier: frontend
+spec:
+  containers:
+  - name: myapp
+    image: ikubernetes/myapp:v1
