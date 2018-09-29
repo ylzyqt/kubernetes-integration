@@ -25,6 +25,16 @@
        
        查看标签
        kubectl get pods --show-labels
+       kubectl get pods -L env 查看env的结果值[查看对应资源的值]
+       kubectl get pods -l env=test 标签过滤
+           =,==,!=
+           
+       kubectl get pods -l "release in (2.0)" 按照IN    
+           
+       
+       手动打标签:
+       kubectl label pods pod-demo release=1.0
+       kubectl label pods pod-demo release=2.0 --overwrite=true  修改标签
        
        
 + #### describe:

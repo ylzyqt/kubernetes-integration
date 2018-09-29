@@ -4,9 +4,15 @@ metadata:
   name: pod-demo
   namespace: default
   labels:
-    app: myapp
-    tier: frontend
+    env: test #长度不超过63，见名知义
 spec:
+  nodeSelector:
+    kubernetes.io/hostname: hostname  #选择node
+  restartPolicy: Always  #Always, OnFailure, Never
+  nodeName: hostname #直接选择机器
   containers:
   - name: myapp
     image: ikubernetes/myapp:v1
+    imagePullPolicy: Always  #Always, Never, IfNotPresent 下载策略
+    ports:
+    - containerPort: 80 #暴露容器的端口,信息提示的意义
