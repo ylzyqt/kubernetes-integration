@@ -43,6 +43,13 @@
                  |
 		 |抽象层,手动创建
                  |负责调度流量
-                 |                
+                 |      
+
++ #### 资源
+         工作负载型资源(workload): pod,replicaSet, Deploy,StatefulSet,DaemonSet,Job,cronJbo
+         服务发现及均衡: services ,ingress
+         配置与存储资源: volumn, CSI
+         集群级的资源: namespace,node,role,clusterRole,roleBinding,clusterRoleBinding
+         元数据型资源: HPA,pod template,limitRange                          
                  
                        
