@@ -2,7 +2,7 @@
 
 + #### 列表
 
-    [nginx](https://github.com/ylzyqt/kubernetes-integration/blob/master/train/yaml/nginx/nginx.md)
+    [pod](https://github.com/ylzyqt/kubernetes-integration/blob/master/train/yaml/pod/pod.md)
           
          
                  

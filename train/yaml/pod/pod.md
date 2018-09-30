@@ -54,6 +54,3 @@
 附表:
 args与command的关系
 https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
-
-
-### Services
