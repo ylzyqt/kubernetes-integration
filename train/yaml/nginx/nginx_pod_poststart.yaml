@@ -1,0 +1,15 @@
+apiVersion: v1
+kind : Pod
+metadata:
+  name: poststart
+  namespace: default
+spec:
+  containers:
+  - name: poststart
+    image: busybox:latest
+    imagePullPolicy: IfNotPresent
+    lifecycle:
+      postStart:
+        exec:
+          command: ['mkdir','-p','/data/web/html']
+    command: ['/bin/sh','-c',' sleep 3600']

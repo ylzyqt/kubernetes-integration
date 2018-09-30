@@ -23,9 +23,33 @@
        初始化容器
        容器探测 -liveness,-readliness
        
-+ #### 容器的重启策略
++ #### 容器的重启策略 restartPolicy
        Always, OnFailure, Never  
-       terminationGracePeriodSeconds : 终止时间                           
+       terminationGracePeriodSeconds : 终止时间     
+       
++ #### 健康状态检测和就绪状态检测
+       kubectl explain pods.spec.containers.livenessProbe  存活[可以根据httpGet来进行存活性校验]    
+       kubectl explain pods.spec.containers.readinessProbe 就绪状态 
+       
+       //存活性校验
+       livenessProbe:
+         httpGet:
+            port: 8080
+            path: /healthy
+            initialDelaySeconds: 1
+            periodSeconds: 3
+       //就绪状态状态 - 如果不就绪，对于service来说，就不会对外开放服务     
+       readinessProbe:
+         httpGet:
+            port: 8080
+            path: /healthy
+            initialDelaySeconds: 1
+            periodSeconds: 3
++ #### 钩子
+       参考 nginx_pod_poststart.yaml 即可
+                   
+          
+                     
        
 附表:
 args与command的关系
