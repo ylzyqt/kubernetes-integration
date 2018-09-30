@@ -10,7 +10,3 @@
    2. [基本命令](https://github.com/ylzyqt/kubernetes-integration/blob/master/train/docs/orders.md)
    3. [资源清单](https://github.com/ylzyqt/kubernetes-integration/blob/master/train/docs/resources.md)
    4. [yaml](https://github.com/ylzyqt/kubernetes-integration/blob/master/train/yaml/yaml.md)
-   
-   
-   3. [redis](https://github.com/ylzyqt/kubernetes-integration/blob/master/train/redis/redis.md)   
-   4. [httpd](https://github.com/ylzyqt/kubernetes-integration/blob/master/train/httpd/httpd.md)

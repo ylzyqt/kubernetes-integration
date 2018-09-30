@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: mydaemon
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: filebeat
+  template:
+    metadata:
+      labels:
+        app: filebeat
+    spec:
+      containers:
+      - name: filebeat
+        image: ikubernetes/filebeat:5.6.5-alpine
+        env:
+        - name: REDIS_HOST
+          value: redis.default.svc.cluster.local
+        - name: REDIS_LOG_LEVEL
+          value: info
+        ports:
+        - name: http
+          containerPort: 80

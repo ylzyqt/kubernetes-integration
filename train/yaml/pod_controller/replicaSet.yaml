@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: myrs
+  namespace: default
+spec:
+  replicas: 2
+  selector:
+    matchLabels: #选择器，选择label
+      app: myapp
+  template:
+    metadata:
+      name: myapp
+      namespace: default #可以不用定义了，根控制器一致
+      labels:
+        app: myapp
+    spec:
+      containers:
+      - name: myrs-container
+        image: ikubernetes/myapp:v1
+        ports:
+        - name: http
+          containerPort: 80

@@ -1,4 +1,4 @@
-## kubernetes-nginx
+## kubernetes-pod
 
 ### PODS
 
