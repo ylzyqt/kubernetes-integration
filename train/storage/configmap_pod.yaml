@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: storage
+  namespace: default
+  labels:
+    env: test
+spec:
+  containers:
+  - name: storage
+    image: ikubernetes/myapp:v1
+    ports:
+    - containerPort: 80
+    env:
+    - name: logDir
+      valueFrom:
+        configMapKeyRef:
+          name: myconfig
+          key: logDir

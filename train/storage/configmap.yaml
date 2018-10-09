@@ -1,0 +1,7 @@
+apiVersion : v1
+kind: ConfigMap
+metadata:
+  name: myconfig
+  namespace: default
+data:
+  logDir: /app/log
