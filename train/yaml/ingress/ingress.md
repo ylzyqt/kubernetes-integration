@@ -14,7 +14,9 @@
           kubectl get pods -n ingress-nginx    
           
           
-       或者: kubectl apply -f https://github.com/kubernetes/ingress-nginx/blob/master/deploy/mandatory.yaml 可以直接部署     
+       或者: kubectl apply -f 
+       https://github.com/kubernetes/ingress-nginx/blob/master/deploy/mandatory.yaml 
+       可以直接部署     
        
 
 + #### 描述
