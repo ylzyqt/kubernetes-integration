@@ -9,6 +9,8 @@
         如果不禁用swap的话： /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
                              Environment="KUBELET_EXTRA_ARGS=--fail-swap-on=false"
                              systemctl daemon-reload
++ ####  ipvs   //TODO                              
+        --proxy-mode,ip_vs,ip_vs_rr,ip_vs_wrr,ip_vs_sh,nf_conntrack_ipv4               
 +  #### 安装docker(docker的版本只是warnning,可以使用自用版本)(master,node)
         1. 卸载已有docker :  sudo apt-get remove docker docker-engine docker.io
         2. apt-get update

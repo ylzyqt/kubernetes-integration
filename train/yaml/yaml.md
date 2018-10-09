@@ -6,5 +6,7 @@
     
     [pod控制器](https://github.com/ylzyqt/kubernetes-integration/blob/master/train/yaml/pod_controller/pod_controller.md)          
          
-    [service](https://github.com/ylzyqt/kubernetes-integration/blob/master/train/yaml/service/service.md)              
+    [service](https://github.com/ylzyqt/kubernetes-integration/blob/master/train/yaml/service/service.md)       
+    
+    [ingress](https://github.com/ylzyqt/kubernetes-integration/blob/master/train/yaml/ingress/ingress.md)       
                 
