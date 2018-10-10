@@ -11,6 +11,8 @@
           NAME                      READY     STATUS    RESTARTS   AGE       IP            NODE         NOMINATED NODE
           pod-demo                  1/1       Running   0          4m        10.244.0.66   app   <none>
        kubectl describe pods pod-demo   
+       
+       kubectl get pods storage -o yaml --export
 + #### 执行验证   
        curl 10.244.0.66    
           Hello MyApp | Version: v1 | <a href="hostname.html">Pod Name</a>   
