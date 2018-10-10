@@ -12,3 +12,4 @@
    4. [yaml](https://github.com/ylzyqt/kubernetes-integration/blob/master/train/yaml/yaml.md)
    5. [存储卷](https://github.com/ylzyqt/kubernetes-integration/blob/master/train/storage/storage.md)
    6. [认证](https://github.com/ylzyqt/kubernetes-integration/blob/master/train/auth/auth.md)
+   7. [调度器](https://github.com/ylzyqt/kubernetes-integration/blob/master/train/scheduler/scheduler.md)
