@@ -48,4 +48,13 @@
         6. 验证安装成功 : kubectl get nodes
         7. 当出问题之后  kubeadm reset 可以重置kubeadm然后再进行kube init...
 + #### kubernetes join(node]
-        kubeadm join*******  就是上面安装master成功后的输出          
+        kubeadm join*******  就是上面安装master成功后的输出  
+
++ #### [dashboard](https://github.com/kubernetes/dashboard)
+        开启外网访问
+        kubectl patch svc kubernetes-dashboard -p '{"spec":{"type":"NodePort"}}' -n kube-system            
+        
+        kubectl create serviceaccount dashboard-admin -n kube-system
+        kubectl create clusterrolebinding dashboard-admin --clusterrole=cluster-admin --serviceaccount=kube-system:dashboard-admin
+        kubectl get secret -n kube-system
+        kubectl describe secret dashboard-admin-token-8lq9n -n kube-system
