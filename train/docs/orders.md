@@ -62,6 +62,9 @@
        命令: 
        kubectl rollout status deploy nginx  查看更新进度
        kubectl rollout undo (TYPE NAME | TYPE/NAME) [flags] [options] 回滚
+
++ #### labels
+       kubectl label nodes node_name disktype=ssd       
                     
                
                  
