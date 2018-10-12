@@ -5,21 +5,16 @@
 
 +  #### 切换root账号
         sudo su
-+  #### swap设置(master,node)
-        如果不禁用swap的话： /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
-                             Environment="KUBELET_EXTRA_ARGS=--fail-swap-on=false"
-                             systemctl daemon-reload
-+ ####  ipvs   //TODO                              
-        --proxy-mode,ip_vs,ip_vs_rr,ip_vs_wrr,ip_vs_sh,nf_conntrack_ipv4               
-+  #### 安装docker(docker的版本只是warnning,可以使用自用版本)(master,node)
+        
++  #### 安装docker(docker的版本只是warning,可以使用自用版本)(master,node)
+        新版本的k8s支持的docker版本列表，已经比较高了,如果已经有安装docker，确保第5步
         1. 卸载已有docker :  sudo apt-get remove docker docker-engine docker.io
         2. apt-get update
         3. apt-cache policy docker-engine 查找目前可安装的版本，注意kubernetes v.1.11.3支持<=17.03版本
            本文安装17.03.0-ce   
         4. 安装docker    sudo apt-get install -y docker-engine=17.03.0~ce-0~ubuntu-xenial              
         5. 设置自启动  sudo systemctl enable docker 
-+  #### pull镜像 (有此步骤、可以不用科学上网) (master,node)
-        1. 将当前目录的images、pull_images.sh文件 拷贝到机器自定义目录，然后执行 sh pull_images.sh即可pull镜像    
+        
 +  #### 安装kubernetes (master,node)
         1. apt-get update && apt-get install -y apt-transport-https
         2. curl -s https://mirrors.aliyun.com/kubernetes/apt/doc/apt-key.gpg | apt-key add -
@@ -27,26 +22,42 @@
            deb https://mirrors.aliyun.com/kubernetes/apt/ kubernetes-xenial main
            EOF
         4. apt-get update
-        5. apt-get install -y kubelet kubeadm kubectl
-        6. 设置自启动  sudo systemctl enable kubelet
+        5. apt-cache policy kubectl 查看版本
+        5. apt-get install -y kubelet=1.12.1-00 kubeadm=1.12.1-00 kubectl=1.12.1-00
+        6. 设置自启动  sudo systemctl enable kubelet        
+                
++  #### swap设置(master,node)
+        /etc/systemd/system/kubelet.service.d
+        
+        Environment="KUBELET_KUBECONFIG_ARGS=--bootstrap-kubeconfig=/etc/kubernetes/bootstrap-kubelet.conf --kubeconfig=/etc/kubernetes/kubelet.conf --fail-swap-on=false"
+        systemctl daemon-reload
+        
++  #### pull镜像 (有此步骤、可以不用科学上网) (master,node)
+        1. kubeadm config images list
+        2. 将当前目录的images、pull_images.sh文件 拷贝到机器自定义目录，然后执行 sh pull_images.sh即可pull镜像          
+
 + #### kubernetes init (master)
-        kubeadm init --kubernetes-version=1.11.3 --pod-network-cidr=10.244.0.0/16 
-             --apiserver-advertise-address=内网ip地址 可以忽略
-             --ignore-preflight-errors=Swap
+        kubeadm init --kubernetes-version=1.12.1 --pod-network-cidr=10.244.0.0/16 --ignore-preflight-errors=Swap
+        --apiserver-advertise-address=内网ip地址 可以忽略
+        
+        成功之后的日志输出，一定要记得执行（普通账号）
+                   mkdir -p $HOME/.kube
+                   sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+                   sudo chown $(id -u):$(id -g) $HOME/.kube/config
+        成功之后的日志输出，kubeadm join*******  请自行保存，这个是node节点用来joinmaster用的 
+        kubectl taint nodes --all node-role.kubernetes.io/master- 如果是单节点
+        验证安装成功 : kubectl get nodes
+        当出问题之后  kubeadm reset 可以重置kubeadm然后再进行kube init...
+        
         常见报错:
         1. 需要带kubernates-version,unable to get URL "https://dl.k8s.io/release/stable-1.11.txt" 
             Get https://storage.googleapis.com/kubernetes-release/release/stable-1.11.txt: dial 
             tcp 172.217.160.112:443: i/o timeout
         2. 注意版本号，1.11.3与images中的版本，需要一致，否则会出现:     
-           [ERROR ImagePull]: failed to pull image [k8s.gcr.io/pause:3.1]: exit status 1 类似的错误              
-        3. 成功之后的日志输出，一定要记得执行（普通账号）
-           mkdir -p $HOME/.kube
-           sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
-           sudo chown $(id -u):$(id -g) $HOME/.kube/config
-        4. 成功之后的日志输出，kubeadm join*******  请自行保存，这个是node节点用来joinmaster用的 
-        5. kubectl taint nodes --all node-role.kubernetes.io/master- 如果是单节点
-        6. 验证安装成功 : kubectl get nodes
-        7. 当出问题之后  kubeadm reset 可以重置kubeadm然后再进行kube init...
+           [ERROR ImagePull]: failed to pull image [k8s.gcr.io/pause:3.1]: exit status 1 类似的错误  
+           
+                       
+        
 + #### kubernetes join(node]
         kubeadm join*******  就是上面安装master成功后的输出  
 
@@ -58,3 +69,8 @@
         kubectl create clusterrolebinding dashboard-admin --clusterrole=cluster-admin --serviceaccount=kube-system:dashboard-admin
         kubectl get secret -n kube-system
         kubectl describe secret dashboard-admin-token-8lq9n -n kube-system
+
+       
+        
++ ####  ipvs   //TODO                              
+        --proxy-mode,ip_vs,ip_vs_rr,ip_vs_wrr,ip_vs_sh,nf_conntrack_ipv4         
