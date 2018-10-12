@@ -45,6 +45,7 @@
                    sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
                    sudo chown $(id -u):$(id -g) $HOME/.kube/config
         成功之后的日志输出，kubeadm join*******  请自行保存，这个是node节点用来joinmaster用的 
+        kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
         kubectl taint nodes --all node-role.kubernetes.io/master- 如果是单节点
         验证安装成功 : kubectl get nodes
         当出问题之后  kubeadm reset 可以重置kubeadm然后再进行kube init...
