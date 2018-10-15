@@ -65,6 +65,9 @@
 
 + #### labels
        kubectl label nodes node_name disktype=ssd       
+       
++ #### taint
+       kubectl taint node node_name  node.type=pro:NoSchedule       
                     
                
                  

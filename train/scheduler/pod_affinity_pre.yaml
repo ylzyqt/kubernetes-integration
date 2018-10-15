@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-aff-pre
+  namespace: default
+  labels:
+    env: test #长度不超过63，见名知义
+spec:
+  restartPolicy: Always  #Always, OnFailure, Never
+  tolerations:
+  - operator: "Exists"
+  containers:
+  - name: myapp
+    image: ikubernetes/myapp:v1
+    imagePullPolicy: Always  #Always, Never, IfNotPresent 下载策略
+    ports:
+    - containerPort: 80 #暴露容器的端口,信息提示的意义
+  affinity:
+   nodeAffinity:
+     preferredDuringSchedulingIgnoredDuringExecution:
+     - preference:
+         matchExpressions:
+         - key : zone
+           operator: In
+           values:
+           - foo
+           - bar
+       weight: 60
