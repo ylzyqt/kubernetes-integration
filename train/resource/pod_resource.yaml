@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-y
+  namespace: default
+  labels:
+    env: test #长度不超过63，见名知义
+spec:
+  restartPolicy: Always  #Always, OnFailure, Never
+  tolerations:
+  - operator: "Exists"
+  containers:
+  - name: myapp
+    image: ikubernetes/stress-ng
+    command: ["usr/bin/stress-ng","-m 1","-c 1","--metrics-brief"]
+    imagePullPolicy: Always  #Always, Never, IfNotPresent 下载策略
+    resources:
+      requests:
+        cpu: "200m"
+        memory: "128Mi"
+      limits:
+        cpu: "500m"
+        memory: "256Mi"
+    ports:
+    - containerPort: 80 #暴露容器的端口,信息提示的意义
