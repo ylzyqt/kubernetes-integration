@@ -3,7 +3,8 @@
 + #### 感谢 [原始安装资料](https://github.com/maguowei/kubernetes-for-china)
    
 + #### 安装步骤
-   1. [安装教程](https://github.com/ylzyqt/kubernetes-integration/blob/master/install/install.md)
+   1. [MASTER安装教程](https://github.com/ylzyqt/kubernetes-integration/blob/master/install/install.md)
+   2. [Node安装教程](https://github.com/ylzyqt/kubernetes-integration/blob/master/install/install_node.md)
      
 + #### 学习笔记
    1. [介绍](https://github.com/ylzyqt/kubernetes-integration/blob/master/train/docs/docs.md)
