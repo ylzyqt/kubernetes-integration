@@ -57,6 +57,15 @@
         5.   kubectl taint nodes --all node-role.kubernetes.io/master- 如果是单节点,否则可以忽略
         
         6.   验证安装成功 : kubectl get nodes
+        
+        注意: 10.244.0.0/16 的flannel网络最多支持256个节点
+                master: 10.244.0.0/24
+                node1:  10.244.1.0/24
+                node2:  10.244.2.0/24
+                ...
+                node255: 10.244.255.0/24
+             所以生产环境，机器比较多的，可以
+             10.244.0.0/12 这样，可以最多4096台机器的集群       
 
 
 + #### [dashboard](https://github.com/kubernetes/dashboard)
@@ -68,7 +77,4 @@
         kubectl get secret -n kube-system
         kubectl describe secret dashboard-admin-token-8lq9n -n kube-system
 
-       
-        
-+ ####  ipvs   //TODO                              
-        --proxy-mode,ip_vs,ip_vs_rr,ip_vs_wrr,ip_vs_sh,nf_conntrack_ipv4         
+            
