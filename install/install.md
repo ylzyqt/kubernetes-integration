@@ -65,7 +65,23 @@
                 ...
                 node255: 10.244.255.0/24
              所以生产环境，机器比较多的，可以
-             10.244.0.0/12 这样，可以最多4096台机器的集群       
+             10.244.0.0/12 这样，可以最多4096台机器的集群    
+             
+        7. node节点，完全删除相关的k8s信息
+           kubeadm reset
+           systemctl stop kubelet
+           rm -rf /var/lib/cni/
+           rm -rf /var/lib/kubelet/*
+           rm -rf /run/flannel
+           rm -rf /etc/cni/
+           ifconfig cni0 down
+           brctl delbr cni0
+           ifconfig flannel.1 down   
+           ip link delete cni0
+           ip link delete flannel.1
+           
+           systemctl start docker
+  
 
 
 + #### [dashboard](https://github.com/kubernetes/dashboard)

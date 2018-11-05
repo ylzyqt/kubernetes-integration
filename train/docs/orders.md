@@ -67,7 +67,8 @@
        kubectl label nodes node_name disktype=ssd       
        
 + #### taint
-       kubectl taint node node_name  node.type=pro:NoSchedule       
+       kubectl taint node node_name  key=value:NoSchedule   打污点
+       kubectl taint node t1-sys-001 zd:NoSchedule-         取消污点
                     
                
                  
