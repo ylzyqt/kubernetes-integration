@@ -68,17 +68,17 @@
              10.244.0.0/12 这样，可以最多4096台机器的集群    
              
         7. node节点，完全删除相关的k8s信息
-kubeadm reset
-systemctl stop kubelet
-rm -rf /var/lib/cni/
-rm -rf /var/lib/kubelet/*
-rm -rf /run/flannel
-rm -rf /etc/cni/
-ifconfig cni0 down
-ifconfig flannel.1 down   
-ip link delete cni0
-ip link delete flannel.1
-           
+           kubeadm reset
+           systemctl stop kubelet
+           rm -rf /var/lib/cni/
+           rm -rf /var/lib/kubelet/*
+           rm -rf /run/flannel
+           rm -rf /etc/cni/
+           ifconfig cni0 down
+           ifconfig flannel.1 down   
+           ip link delete cni0
+           ip link delete flannel.1
+                
            systemctl start docker
   
 
