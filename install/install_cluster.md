@@ -32,8 +32,7 @@
            
            
         4. 创建启动文件
-        
-        (```)
+    
            cat > /etc/systemd/system/etcd.service <<EOF
            [Unit]
            Description=Etcd Server
@@ -53,7 +52,7 @@
            [Install]
            WantedBy=multi-user.target
            EOF
-        (```)   
+  
            
            使之生效
            sudo systemctl daemon-reload 
