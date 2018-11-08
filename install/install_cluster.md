@@ -5,8 +5,10 @@
         Ubuntu 16.04 *n 作为node<此处不包含node的部分>
 
 +  #### 安装ETCD
-        背景: 因为已经有了安装k8s单master的经验，此处使用的时候，先看了kubeadm里面，安装的etcd的版本，此处于k8s单节点默认的保持一致
-        1. 下载ETCD安装文件 sudo wget https://github.com/coreos/etcd/releases/download/v3.2.24/etcd-v3.2.24-linux-amd64.tar.gz           
+        背景: 因为已经有了安装k8s单master的经验，此处使用的时候，先看了kubeadm里面，
+             安装的etcd的版本，此处于k8s单节点默认的保持一致
+        1. 下载ETCD安装文件 
+        sudo wget https://github.com/coreos/etcd/releases/download/v3.2.24/etcd-v3.2.24-linux-amd64.tar.gz           
         
         2. 解压并拷贝
            tar -zxvf etcd-v3.2.24-linux-amd64.tar.gz \
