@@ -4,7 +4,8 @@
    
 + #### 安装步骤
    1. [MASTER安装教程](https://github.com/ylzyqt/kubernetes-integration/blob/master/install/install.md)
-   2. [Node安装教程](https://github.com/ylzyqt/kubernetes-integration/blob/master/install/install_node.md)
+   2. [MASTER集群安装教程](https://github.com/ylzyqt/kubernetes-integration/blob/master/install/install_cluster.md)
+   3. [Node安装教程](https://github.com/ylzyqt/kubernetes-integration/blob/master/install/install_node.md)
      
 + #### 学习笔记
    1. [介绍](https://github.com/ylzyqt/kubernetes-integration/blob/master/train/docs/docs.md)
