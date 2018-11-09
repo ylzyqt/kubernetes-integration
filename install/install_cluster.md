@@ -6,8 +6,8 @@
 
 +  #### 安装ETCD
         背景: 因为已经有了安装k8s单master的经验，此处使用的时候，先看了kubeadm里面，
-             安装的etcd的版本，此处于k8s单节点默认的保持一致
-        1. 下载ETCD安装文件 
+              安装的etcd的版本，此处于k8s单节点默认的保持一致
+        1. 下载ETCD安装文件
         sudo wget https://github.com/coreos/etcd/releases/download/v3.2.24/etcd-v3.2.24-linux-amd64.tar.gz           
         
         2. 解压并拷贝
@@ -66,3 +66,11 @@
           
          6. 如果出现 request cluster ID mismatch (got bdd7c7c32bde1208 want 698851d67fea3c17) 
            那么删除  /var/lib/etcd/ 下的文件即可，因为刚开始，可能测试部署
+
++   #### 安装k8s
+
+         1. 在 3台 master 机器上面, 参考 [单节点安装](http) 一直到完成Swap
+         
+         2. 在第一台上面执行 kubeadm init --config kubeadm-config.yaml --ignore-preflight-errors=Swap 即可完成第一台部署
+         
+           
