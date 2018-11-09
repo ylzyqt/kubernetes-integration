@@ -73,4 +73,12 @@
          
          2. 在第一台上面执行 kubeadm init --config kubeadm-config.yaml --ignore-preflight-errors=Swap 即可完成第一台部署
          
+         3. 打包第一台上面/etc/kubernetes/pki 目录:  sudo tar czvf pki.tar /etc/kubernetes/pki
+         
+         4. 将pki.tar拷贝到第二、第三台master机器上面，在同目录解压: tar zxvf pki.tar
+         
+         5. 删除其中的apiserver.crt和apiserver.key 
+         
+         6. 执行第二步骤,即可
+         
            
