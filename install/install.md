@@ -52,7 +52,10 @@
                    
         3.   成功之后的日志输出，kubeadm join*******  请自行保存，这个是node节点用来joinmaster用的 
         
-        4.   kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+           
+        4.   安装网络
+             WARNNING:   如果修改了flannel的子网掩码，这里一定要下载下来，修改之后再启用
+             kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
         
         5.   kubectl taint nodes --all node-role.kubernetes.io/master- 如果是单节点,否则可以忽略
         
