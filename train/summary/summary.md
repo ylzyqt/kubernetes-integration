@@ -13,3 +13,18 @@
    结论: 如果想快速发布完成，可以调整  maxSurge 的值，这样在同一时间点，有更多的项目在部署
    
 ```
+
+### 2: Deployment 滚动发布的时候，旧的容器希望多留存一会，放置一些耗时的操作
+```
+ terminationGracePeriodSeconds, 优雅的关闭,默认为 30 秒
+ but: 实际测试的时候，这个参数单独使用，没有用处，测试下来，可以这么用，如果要让旧容器多停留100秒，需要
+  
+     terminationGracePeriodSeconds: 100 
+
+     lifecycle:
+       preStop:
+         exec:
+           command: ['/bin/sh','-c',' sleep 100']
+           
+ 配置这2个参数之后,就可以了           
+```
