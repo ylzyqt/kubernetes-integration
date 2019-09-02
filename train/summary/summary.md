@@ -28,3 +28,14 @@
            
  配置这2个参数之后,就可以了           
 ```
+
+
+
+#### 4: nf_conntrack_max的问题
+
+```
+kubectl edit  configmap kube-proxy  -n kube-system
+
+修改conntrack.min从131072 修改为 262144
+```
+
